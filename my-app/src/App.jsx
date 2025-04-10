@@ -18,15 +18,15 @@ function App() {
     setPets(newPets);
   };
 
-const getLeader = () => {
-  if (pets[0].count === pets[1].count) {
-    return `It's a tie! Both have ${pets[0].count} vote(s)`;
-}
+  const getLeader = () => {
+    if (pets[0].count === pets[1].count) {
+      return `It's a tie! Both have ${pets[0].count} vote(s)`;
+    }
 
-  const leader = pets.reduce((max, pet) =>
+    const leader = pets.reduce((max, pet) =>
       pet.count > max.count ? pet : max
     );
-      return `${leader.option} is leading with ${leader.count} vote(s)`;
+    return `${leader.option} is leading with ${leader.count} vote(s)`;
   };
 
   return (
@@ -45,18 +45,18 @@ const getLeader = () => {
       {/* Count Button Section */}
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-      count is {count}
+          count is {count}
         </button>
       </div>
 
       <h2>Pet Poll</h2>
-        {pets.map((pet, index) => (
-          <PollOption
-            key={index}
-            label={pet.option}
-            count={pet.count}
-            onVote={() => handleVote(index)}
-          />
+      {pets.map((pet, index) => (
+        <PollOption
+          key={index}
+          label={pet.option}
+          count={pet.count}
+          onVote={() => handleVote(index)}
+        />
       ))}
 
       <h3>{getLeader()}</h3>
